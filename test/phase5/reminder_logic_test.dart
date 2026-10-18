@@ -61,9 +61,10 @@ void main() {
   });
 
   test('reminder time round-trips and is kept within a day', () {
-    final s = const AppSettings(reminderMinutes: 8 * 60 + 30);
+    const s = AppSettings(reminderMinutes: 8 * 60 + 30);
     expect(AppSettings.fromJson(s.toJson()).reminderMinutes, 510);
-    expect(AppSettings.fromJson({'reminderMinutes': 99999}).reminderMinutes, 1439);
+    expect(
+        AppSettings.fromJson({'reminderMinutes': 99999}).reminderMinutes, 1439);
     expect(AppSettings.fromJson({'reminderMinutes': -5}).reminderMinutes, 0);
   });
 }
