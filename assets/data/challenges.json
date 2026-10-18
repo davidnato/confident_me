@@ -1,0 +1,483 @@
+{
+  "version": 1,
+  "challenges": [
+    {
+      "id": "conv_greet",
+      "title": "Smile or greet someone",
+      "description": "Offer a small smile or a friendly hello to someone when it feels appropriate, such as a neighbour, a cashier, or a classmate.",
+      "category": "starting_conversations",
+      "difficulty": "easy",
+      "estimatedMinutes": 2,
+      "preparation": "Pick a setting where a quick hello feels natural, like a shop or your building.",
+      "instructions": [
+        "Notice someone nearby who seems approachable.",
+        "Make brief eye contact and smile, or say a simple hello.",
+        "Let it end there if that feels like enough. A small step still counts."
+      ],
+      "reflectionPrompt": "How did it feel in the moment, and how did the other person respond?",
+      "xpReward": 10,
+      "easierStep": "Smile at someone from a distance, or say hello to a familiar face."
+    },
+    {
+      "id": "conv_message_friend",
+      "title": "Send a friendly message to someone you know",
+      "description": "Reach out with a short, low-pressure message to a friend, relative, or colleague.",
+      "category": "starting_conversations",
+      "difficulty": "easy",
+      "estimatedMinutes": 5,
+      "preparation": "Think of someone you would enjoy hearing from. You do not need a big reason to say hi.",
+      "instructions": [
+        "Choose one person.",
+        "Write one or two friendly sentences, such as asking how their week is going.",
+        "Send it, then carry on with your day without waiting for a reply."
+      ],
+      "reflectionPrompt": "What was it like to send it, and did anything surprise you?",
+      "xpReward": 10,
+      "easierStep": "Write the message but save it as a draft, or react kindly to something they posted."
+    },
+    {
+      "id": "conv_shared_interest",
+      "title": "Start a short conversation about a shared interest",
+      "description": "Talk briefly with someone about something you both enjoy, like a show, a hobby, or a local place.",
+      "category": "starting_conversations",
+      "difficulty": "medium",
+      "estimatedMinutes": 10,
+      "preparation": "Think of one interest you share with a person you already know a little.",
+      "instructions": [
+        "Choose a calm moment when they are not rushed.",
+        "Open with a simple comment or question about the interest.",
+        "Listen for something they say and ask one follow-up question.",
+        "Wrap up warmly whenever you like."
+      ],
+      "reflectionPrompt": "What did you learn about them, and what helped the conversation along?",
+      "xpReward": 20,
+      "easierStep": "Send a short message about the shared interest instead of talking in person."
+    },
+    {
+      "id": "conv_introduce_new",
+      "title": "Introduce yourself to someone new in a suitable setting",
+      "description": "At a class, event, or group where meeting people is expected, say hello and share your name.",
+      "category": "starting_conversations",
+      "difficulty": "hard",
+      "estimatedMinutes": 15,
+      "preparation": "Choose a setting where introductions are normal. Prepare a one-line introduction and one question.",
+      "instructions": [
+        "Pick a moment when the person is not busy.",
+        "Say your name and one simple thing, like why you are there.",
+        "Ask one question, such as what brought them along.",
+        "Leave comfortably whenever you like. You never have to stay longer than feels okay."
+      ],
+      "reflectionPrompt": "What went better than you expected, even in a small way?",
+      "xpReward": 30,
+      "easierStep": "Practise your introduction aloud first, or simply stand near a group and listen."
+    },
+    {
+      "id": "daily_purchase_question",
+      "title": "Make a simple purchase and ask one question",
+      "description": "Buy something small and ask the person helping you one simple question, such as where to find an item.",
+      "category": "everyday_interactions",
+      "difficulty": "easy",
+      "estimatedMinutes": 5,
+      "preparation": "Decide on one small thing to buy and one question to ask.",
+      "instructions": [
+        "Go to a shop, cafe, or market.",
+        "Ask your question in a calm, clear voice.",
+        "Say thank you and finish your purchase."
+      ],
+      "reflectionPrompt": "How did it feel, and what did you notice about how it actually went?",
+      "xpReward": 10,
+      "easierStep": "Ask your question using a self-checkout help point, or just say thanks to the cashier."
+    },
+    {
+      "id": "daily_thank_helper",
+      "title": "Thank someone who helps you",
+      "description": "Say a genuine thank you to someone who does something helpful, like holding a door or serving you.",
+      "category": "everyday_interactions",
+      "difficulty": "easy",
+      "estimatedMinutes": 3,
+      "preparation": "Keep an eye out for a small helpful moment today.",
+      "instructions": [
+        "Notice when someone does something helpful.",
+        "Look at them briefly and say thank you.",
+        "Notice how the moment feels, then move on."
+      ],
+      "reflectionPrompt": "How did it feel, and what did you notice about how it actually went?",
+      "xpReward": 10,
+      "easierStep": "Say thank you quietly or with a nod and a smile."
+    },
+    {
+      "id": "daily_ask_clarify",
+      "title": "Ask someone to clarify something",
+      "description": "When something is unclear, ask a calm question to check you understood, instead of guessing.",
+      "category": "everyday_interactions",
+      "difficulty": "medium",
+      "estimatedMinutes": 5,
+      "preparation": "Think of a recent time you were unsure. Asking for clarity is a normal, useful skill.",
+      "instructions": [
+        "Wait for a natural moment.",
+        "Say something like: Could you explain that part again?",
+        "Listen, and say thanks for the explanation."
+      ],
+      "reflectionPrompt": "What happened when you asked, and how did the other person respond?",
+      "xpReward": 20,
+      "easierStep": "Ask the question in a message or email rather than aloud."
+    },
+    {
+      "id": "daily_ask_recommendation",
+      "title": "Ask for a recommendation",
+      "description": "At a cafe, shop, or library, ask someone what they would recommend.",
+      "category": "everyday_interactions",
+      "difficulty": "medium",
+      "estimatedMinutes": 5,
+      "preparation": "Pick a place where people expect questions, like a bookshop or cafe.",
+      "instructions": [
+        "Choose a calm moment.",
+        "Ask: What do you like here?, or: What would you suggest?",
+        "Listen to the answer and say thank you, whether or not you take their suggestion."
+      ],
+      "reflectionPrompt": "How did it feel, and what did you notice about how it actually went?",
+      "xpReward": 20,
+      "easierStep": "Read a staff recommendation card or shelf label instead."
+    },
+    {
+      "id": "opin_choose_aloud",
+      "title": "Say what you would like when choosing",
+      "description": "When choosing a place to eat or something to watch with a friend, say what you would prefer.",
+      "category": "expressing_opinions",
+      "difficulty": "easy",
+      "estimatedMinutes": 3,
+      "preparation": "Decide ahead of time what you might say, like: I would enjoy pizza tonight.",
+      "instructions": [
+        "Wait until a choice comes up.",
+        "State one preference in a friendly tone.",
+        "Stay open to what others say too."
+      ],
+      "reflectionPrompt": "How did it feel to have a preference heard?",
+      "xpReward": 10,
+      "easierStep": "Share a preference in a message, or tell a friend something you like."
+    },
+    {
+      "id": "opin_group_preference",
+      "title": "Express a preference in a group",
+      "description": "Share a simple preference when a group is deciding something, like a meeting time or a place to eat.",
+      "category": "expressing_opinions",
+      "difficulty": "medium",
+      "estimatedMinutes": 5,
+      "preparation": "Pick one small decision where your preference genuinely matters to you.",
+      "instructions": [
+        "Listen to the options first.",
+        "Say your preference in one short sentence.",
+        "Accept whatever the group decides, and notice how it went."
+      ],
+      "reflectionPrompt": "How did it feel, and what did you notice about how it actually went?",
+      "xpReward": 20,
+      "easierStep": "Tell just one person in the group your preference beforehand."
+    },
+    {
+      "id": "opin_share_respectfully",
+      "title": "Share an opinion respectfully in a group",
+      "description": "Offer your view on a topic in a kind, clear way, even when others may see it differently.",
+      "category": "expressing_opinions",
+      "difficulty": "hard",
+      "estimatedMinutes": 10,
+      "preparation": "Choose a low-stakes topic. Plan one sentence beginning with: I think... or: For me...",
+      "instructions": [
+        "Listen to at least one other view.",
+        "Share your opinion in one or two sentences.",
+        "If someone disagrees, you can say: Thanks, that is a fair point."
+      ],
+      "reflectionPrompt": "What did you do even though it felt difficult?",
+      "xpReward": 30,
+      "easierStep": "Write your opinion down first, or share it with one trusted person."
+    },
+    {
+      "id": "assert_say_prefer",
+      "title": "Practise saying I would prefer... aloud",
+      "description": "Rehearse assertive, polite phrases on your own so they feel more familiar.",
+      "category": "assertiveness",
+      "difficulty": "easy",
+      "estimatedMinutes": 3,
+      "preparation": "Find a private spot. Choose two or three phrases such as: I would prefer...",
+      "instructions": [
+        "Say each phrase aloud, slowly.",
+        "Try it with a calm voice, then a warm voice.",
+        "Notice which one feels most like you."
+      ],
+      "reflectionPrompt": "Which phrase felt most natural, and where might you use it?",
+      "xpReward": 10,
+      "easierStep": "Say the phrase quietly or write it down."
+    },
+    {
+      "id": "assert_decline_small",
+      "title": "Decline something small, politely",
+      "description": "Say no to a small offer or request in a kind, clear way.",
+      "category": "assertiveness",
+      "difficulty": "medium",
+      "estimatedMinutes": 5,
+      "preparation": "Choose something small, such as turning down an extra at a shop or a minor favour.",
+      "instructions": [
+        "Pause and check what you actually want.",
+        "Say something like: No thank you, I am fine.",
+        "You do not have to over-explain."
+      ],
+      "reflectionPrompt": "What was it like to say no kindly?",
+      "xpReward": 20,
+      "easierStep": "Practise the phrase aloud alone first."
+    },
+    {
+      "id": "assert_reasonable_request",
+      "title": "Make a reasonable request",
+      "description": "Ask for something fair, like a quieter table, a deadline change, or a bit of help.",
+      "category": "assertiveness",
+      "difficulty": "hard",
+      "estimatedMinutes": 10,
+      "preparation": "Be clear about what you want and why it is reasonable. Plan one calm sentence.",
+      "instructions": [
+        "Choose a calm moment.",
+        "State your request simply: Would it be possible to...?",
+        "Listen to the answer. A no is information, not a verdict on you."
+      ],
+      "reflectionPrompt": "What would you tell a friend who did this?",
+      "xpReward": 30,
+      "easierStep": "Make the request in writing, or rehearse it aloud first."
+    },
+    {
+      "id": "speak_intro_aloud",
+      "title": "Practise introducing yourself aloud",
+      "description": "Say a short introduction out loud on your own: your name and one thing about you.",
+      "category": "public_speaking",
+      "difficulty": "easy",
+      "estimatedMinutes": 3,
+      "preparation": "Think of one friendly sentence about yourself.",
+      "instructions": [
+        "Stand or sit comfortably.",
+        "Say your introduction aloud twice.",
+        "Adjust anything that feels unnatural."
+      ],
+      "reflectionPrompt": "What would you change, and what already sounds good?",
+      "xpReward": 10,
+      "easierStep": "Say it in a whisper, or write it down first."
+    },
+    {
+      "id": "speak_record_minute",
+      "title": "Record a one-minute talk",
+      "description": "Record yourself speaking for about a minute on a topic you like, then listen back kindly.",
+      "category": "public_speaking",
+      "difficulty": "medium",
+      "estimatedMinutes": 10,
+      "preparation": "Pick a simple topic like a favourite place. Recordings stay on your device unless you share them.",
+      "instructions": [
+        "Take a few slow breaths.",
+        "Record yourself talking for about a minute.",
+        "Listen back and name two things that went fine."
+      ],
+      "reflectionPrompt": "What did you notice that you liked?",
+      "xpReward": 20,
+      "easierStep": "Record just 20 seconds."
+    },
+    {
+      "id": "speak_short_presentation",
+      "title": "Give a short presentation",
+      "description": "Share a few minutes of prepared content with a small, friendly audience.",
+      "category": "public_speaking",
+      "difficulty": "hard",
+      "estimatedMinutes": 20,
+      "preparation": "Prepare three simple points. Practise aloud once or twice. Choose a supportive audience.",
+      "instructions": [
+        "Breathe slowly before you begin.",
+        "Share your three points at your own pace.",
+        "Pausing is fine. Finish with a simple thank you."
+      ],
+      "reflectionPrompt": "What did you learn, and what would you try next time?",
+      "xpReward": 30,
+      "easierStep": "Present to one friend, or practise aloud alone."
+    },
+    {
+      "id": "social_ask_colleague",
+      "title": "Ask a colleague or classmate a simple question",
+      "description": "Ask someone nearby a practical question, like how something works or when something is due.",
+      "category": "social_participation",
+      "difficulty": "easy",
+      "estimatedMinutes": 3,
+      "preparation": "Think of one real, small question you have.",
+      "instructions": [
+        "Pick a calm moment.",
+        "Ask your question simply.",
+        "Say thanks for the answer."
+      ],
+      "reflectionPrompt": "How did it feel, and what did you notice about how it actually went?",
+      "xpReward": 10,
+      "easierStep": "Send the question as a message."
+    },
+    {
+      "id": "social_compliment",
+      "title": "Give someone a genuine compliment",
+      "description": "Offer a sincere, specific compliment when it feels natural and appropriate.",
+      "category": "social_participation",
+      "difficulty": "medium",
+      "estimatedMinutes": 3,
+      "preparation": "Notice something you truly appreciate, like effort or a helpful habit.",
+      "instructions": [
+        "Choose something honest and specific.",
+        "Say it briefly and kindly.",
+        "Let them respond however they like."
+      ],
+      "reflectionPrompt": "How did it feel to give it, and how did it land?",
+      "xpReward": 20,
+      "easierStep": "Write the compliment in a message or card."
+    },
+    {
+      "id": "social_contribute_idea",
+      "title": "Contribute one idea in a meeting or class",
+      "description": "Share one idea, question, or comment in a group setting.",
+      "category": "social_participation",
+      "difficulty": "medium",
+      "estimatedMinutes": 5,
+      "preparation": "Jot down one idea before the session. A question counts too.",
+      "instructions": [
+        "Listen for a natural opening.",
+        "Say your idea in one or two sentences.",
+        "Notice that you did it, whatever the response."
+      ],
+      "reflectionPrompt": "What did you do even though it felt hard?",
+      "xpReward": 20,
+      "easierStep": "Send your idea by chat or after the meeting."
+    },
+    {
+      "id": "social_attend_gathering",
+      "title": "Attend a gathering and start one conversation",
+      "description": "Go to a social event you feel okay about and begin one conversation.",
+      "category": "social_participation",
+      "difficulty": "hard",
+      "estimatedMinutes": 30,
+      "preparation": "Choose a friendly event. Plan one opener and an easy way to leave when you are ready.",
+      "instructions": [
+        "Arrive when you feel ready.",
+        "Start one conversation using your opener.",
+        "Leave when you choose. Even a short visit counts."
+      ],
+      "reflectionPrompt": "What went better than you expected?",
+      "xpReward": 30,
+      "easierStep": "Attend for just ten minutes, or go with someone you trust."
+    },
+    {
+      "id": "self_three_wins",
+      "title": "Write down three things you handled well",
+      "description": "Note three things from this week that you did well, however small.",
+      "category": "self_confidence",
+      "difficulty": "easy",
+      "estimatedMinutes": 5,
+      "preparation": "Grab a pen or open a note.",
+      "instructions": [
+        "Think back over the last few days.",
+        "Write down three things you handled okay or well.",
+        "Read them once, slowly."
+      ],
+      "reflectionPrompt": "What do these say about the effort you are putting in?",
+      "xpReward": 10,
+      "easierStep": "Write down just one."
+    },
+    {
+      "id": "self_kinder_thought",
+      "title": "Swap one harsh thought for a kinder one",
+      "description": "Notice a critical thought and rewrite it as you would for a friend.",
+      "category": "self_confidence",
+      "difficulty": "easy",
+      "estimatedMinutes": 5,
+      "preparation": "Think of a recent moment you judged yourself about.",
+      "instructions": [
+        "Write the harsh thought exactly as it sounds.",
+        "Ask: What would I say to a friend?",
+        "Write a kinder, realistic version."
+      ],
+      "reflectionPrompt": "How does the kinder version feel compared to the first?",
+      "xpReward": 10,
+      "easierStep": "Just notice the harsh thought and name it, without rewriting it."
+    },
+    {
+      "id": "self_slightly_uncomfortable",
+      "title": "Do one slightly uncomfortable thing",
+      "description": "Choose a small action that stretches you a little, and do it at your own pace.",
+      "category": "self_confidence",
+      "difficulty": "medium",
+      "estimatedMinutes": 10,
+      "preparation": "Choose something only mildly uncomfortable that is safe and your own choice.",
+      "instructions": [
+        "Name the action in one sentence.",
+        "Take one slow breath.",
+        "Do it, then notice how you feel afterwards."
+      ],
+      "reflectionPrompt": "What did you do even though it felt difficult?",
+      "xpReward": 20,
+      "easierStep": "Pick an even smaller version."
+    },
+    {
+      "id": "awk_pause",
+      "title": "Let a pause last three breaths",
+      "description": "Practise letting a quiet moment be okay instead of rushing to fill it.",
+      "category": "awkward_moments",
+      "difficulty": "easy",
+      "estimatedMinutes": 5,
+      "preparation": "Pick a conversation or practise alone.",
+      "instructions": [
+        "When a pause happens, take one slow breath.",
+        "Count three breaths if that is comfortable.",
+        "Resume with a simple comment or question."
+      ],
+      "reflectionPrompt": "What happened when you let the pause be?",
+      "xpReward": 10,
+      "easierStep": "Practise on your own, simply sitting through ten seconds of quiet."
+    },
+    {
+      "id": "awk_ask_repeat",
+      "title": "Ask someone to repeat something",
+      "description": "If you miss something, ask kindly for it to be repeated.",
+      "category": "awkward_moments",
+      "difficulty": "easy",
+      "estimatedMinutes": 2,
+      "preparation": "Remember that asking someone to repeat is very ordinary.",
+      "instructions": [
+        "Wait for a natural moment.",
+        "Say: Sorry, could you say that again?",
+        "Thank them and carry on."
+      ],
+      "reflectionPrompt": "How did it feel, and what did you notice about how it actually went?",
+      "xpReward": 10,
+      "easierStep": "Practise the phrase aloud alone."
+    },
+    {
+      "id": "awk_recover_slip",
+      "title": "Recover from a small slip kindly",
+      "description": "If you stumble over words or make a small mistake, practise a light recovery.",
+      "category": "awkward_moments",
+      "difficulty": "medium",
+      "estimatedMinutes": 5,
+      "preparation": "Pick a recovery phrase, like: Let me try that again.",
+      "instructions": [
+        "Pause for a breath.",
+        "Say your recovery phrase.",
+        "Continue without apologising repeatedly."
+      ],
+      "reflectionPrompt": "What did you notice about how others responded?",
+      "xpReward": 20,
+      "easierStep": "Practise the phrase aloud alone."
+    },
+    {
+      "id": "awk_end_conversation",
+      "title": "End a conversation politely",
+      "description": "Practise wrapping up a chat in a friendly, clear way.",
+      "category": "awkward_moments",
+      "difficulty": "medium",
+      "estimatedMinutes": 5,
+      "preparation": "Choose a closing phrase, like: It was nice talking, I am going to head off.",
+      "instructions": [
+        "Wait for a natural pause.",
+        "Say your closing phrase with a smile.",
+        "Say goodbye and go."
+      ],
+      "reflectionPrompt": "How did it feel to close the conversation kindly?",
+      "xpReward": 20,
+      "easierStep": "Practise the phrase aloud alone."
+    }
+  ]
+}

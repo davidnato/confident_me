@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "affirmations": [
+    {
+      "id": "aff_01",
+      "text": "I can feel nervous and still take a small step.",
+      "category": "calm"
+    },
+    {
+      "id": "aff_02",
+      "text": "I do not need to be perfect to connect with people.",
+      "category": "self_acceptance"
+    },
+    {
+      "id": "aff_03",
+      "text": "A pause in conversation is normal.",
+      "category": "calm"
+    },
+    {
+      "id": "aff_04",
+      "text": "I can learn from uncomfortable moments.",
+      "category": "progress"
+    },
+    {
+      "id": "aff_05",
+      "text": "My worth does not depend on everyone's opinion.",
+      "category": "self_acceptance"
+    },
+    {
+      "id": "aff_06",
+      "text": "Progress matters more than perfection.",
+      "category": "progress"
+    },
+    {
+      "id": "aff_07",
+      "text": "It is okay to take things at my own pace.",
+      "category": "calm"
+    },
+    {
+      "id": "aff_08",
+      "text": "Small steps add up over time.",
+      "category": "progress"
+    },
+    {
+      "id": "aff_09",
+      "text": "Most people are focused on themselves, and many feel nervous too.",
+      "category": "connection"
+    },
+    {
+      "id": "aff_10",
+      "text": "I can ask for what I need, kindly and clearly.",
+      "category": "connection"
+    }
+  ]
+}
