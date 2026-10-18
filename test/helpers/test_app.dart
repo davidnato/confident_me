@@ -4,6 +4,10 @@ import 'package:confident_me/app.dart';
 import 'package:confident_me/core/utils/clock.dart';
 import 'package:confident_me/data/providers.dart';
 import 'package:confident_me/data/repositories/profile_repository.dart';
+import 'package:confident_me/data/repositories/settings_repository.dart';
+import 'package:confident_me/models/app_settings.dart';
+import 'package:confident_me/data/repositories/record_store.dart';
+import 'package:confident_me/features/social_practice/scenario_providers.dart';
 import 'package:confident_me/features/affirmations/affirmation_providers.dart';
 import 'package:confident_me/features/challenges/challenge_providers.dart';
 import 'package:confident_me/models/confidence_challenge.dart';
@@ -24,8 +28,11 @@ Future<void> pumpApp(
   bool withProfile = true,
   List<ConfidenceChallenge>? challenges,
   DateTime? now,
+  AppSettings? settings,
 }) async {
   SharedPreferences.setMockInitialValues({
+    if (settings != null)
+      SettingsRepository.storageKey: jsonEncode(settings.toJson()),
     if (withProfile)
       ProfileRepository.storageKey: jsonEncode(
         UserProfile.guest(id: 'test-user', now: DateTime(2026, 1, 1)).toJson(),
@@ -41,6 +48,8 @@ Future<void> pumpApp(
     ProviderScope(
       overrides: <Override>[
         sharedPreferencesProvider.overrideWithValue(prefs),
+        recordStoreFactoryProvider.overrideWithValue(InMemoryRecordStoreFactory()),
+        scenariosProvider.overrideWith((ref) => Future.value(fixtureScenarios())),
         challengesProvider.overrideWith(
           (ref) => Future.value(challenges ?? fixtureChallenges()),
         ),

@@ -35,12 +35,12 @@ void main() {
     final container = await makeContainer();
     final c = container.read(challengeProgressProvider.notifier);
     await c.start('x');
-    expect(await c.complete('x', reflection: '  went fine  '), isTrue);
+    expect(await c.complete('x', reflection: '  went fine  '), isNotNull);
     final firstCompletion =
         container.read(challengeProgressProvider).single.completedAt;
 
     fakeNow = fakeNow.add(const Duration(hours: 1));
-    expect(await c.complete('x', reflection: 'again'), isFalse);
+    expect(await c.complete('x', reflection: 'again'), isNull);
 
     final records = container.read(challengeProgressProvider);
     expect(records.length, 1);
@@ -53,7 +53,7 @@ void main() {
   test('complete works directly without a separate start', () async {
     final container = await makeContainer();
     final c = container.read(challengeProgressProvider.notifier);
-    expect(await c.complete('x'), isTrue);
+    expect(await c.complete('x'), isNotNull);
     expect(container.read(challengeProgressProvider).completedCount, 1);
   });
 
@@ -62,7 +62,7 @@ void main() {
     final c = container.read(challengeProgressProvider.notifier);
     await c.complete('x');
     await c.start('x');
-    expect(await c.complete('x'), isTrue);
+    expect(await c.complete('x'), isNotNull);
     expect(container.read(challengeProgressProvider).completedCount, 2);
   });
 

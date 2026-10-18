@@ -12,6 +12,7 @@ void main() {
     expect(find.text('Try one small step'), findsOneWidget);
     expect(find.text('Fixture affirmation text.'), findsOneWidget);
     expect(find.text('0 challenges completed'), findsOneWidget);
+    expect(find.byKey(const Key('home_level')), findsOneWidget);
   });
 
   testWidgets('"Try one small step" opens the suggested challenge',

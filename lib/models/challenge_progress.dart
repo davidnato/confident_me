@@ -40,7 +40,7 @@ class ChallengeProgress {
   final DateTime? postponedUntil;
   final String reflection;
 
-  /// Always 0 until XP is added in Phase 3.
+  /// XP this attempt earned (0 if none yet).
   final int xpAwarded;
 
   /// True if the person chose the smaller "Make this easier" version.
@@ -68,6 +68,19 @@ class ChallengeProgress {
         reflection: reflection ?? this.reflection,
         xpAwarded: xpAwarded,
         simplified: simplified ?? this.simplified,
+      );
+
+  ChallengeProgress withXpAwarded(int xp) => ChallengeProgress(
+        id: id,
+        challengeId: challengeId,
+        status: status,
+        updatedAt: updatedAt,
+        startedAt: startedAt,
+        completedAt: completedAt,
+        postponedUntil: postponedUntil,
+        reflection: reflection,
+        xpAwarded: xp,
+        simplified: simplified,
       );
 
   Map<String, dynamic> toJson() => {

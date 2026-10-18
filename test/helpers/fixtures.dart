@@ -3,6 +3,7 @@ import 'package:confident_me/models/challenge_category.dart';
 import 'package:confident_me/models/challenge_progress.dart';
 import 'package:confident_me/models/confidence_challenge.dart';
 import 'package:confident_me/models/difficulty.dart';
+import 'package:confident_me/models/social_scenario.dart';
 
 ConfidenceChallenge testChallenge(
   String id,
@@ -59,3 +60,31 @@ ChallengeProgress record(
       completedAt: status == ChallengeStatus.completed ? at : null,
       postponedUntil: postponedUntil,
     );
+
+List<SocialScenario> fixtureScenarios() => const [
+      SocialScenario(
+        id: 'intro',
+        title: 'Introducing yourself',
+        description: 'Say who you are.',
+        setting: 'A class',
+        conversationStarters: ['Hi, I am [name].'],
+        followUpQuestions: ['What brought you here?'],
+        prompts: [
+          PracticePrompt(heard: 'Nice to meet you!', suggestions: ['Nice to meet you too.']),
+          PracticePrompt(heard: 'What do you do?', suggestions: ['I study [subject].']),
+        ],
+        listeningTips: ['Look at the person.'],
+      ),
+      SocialScenario(
+        id: 'pause',
+        title: 'Handling an awkward pause',
+        description: 'It goes quiet.',
+        setting: 'Anywhere',
+        conversationStarters: ['Anything fun this week?'],
+        followUpQuestions: [],
+        prompts: [
+          PracticePrompt(heard: '(silence)', suggestions: ['Take a breath.']),
+        ],
+        listeningTips: [],
+      ),
+    ];

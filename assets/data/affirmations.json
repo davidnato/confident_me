@@ -50,6 +50,76 @@
       "id": "aff_10",
       "text": "I can ask for what I need, kindly and clearly.",
       "category": "connection"
+    },
+    {
+      "id": "aff_11",
+      "text": "I can take a slow breath before I speak.",
+      "category": "calm"
+    },
+    {
+      "id": "aff_12",
+      "text": "Feeling nervous does not mean something is wrong.",
+      "category": "calm"
+    },
+    {
+      "id": "aff_13",
+      "text": "I can let a feeling be here without letting it decide for me.",
+      "category": "calm"
+    },
+    {
+      "id": "aff_14",
+      "text": "I am allowed to be a work in progress.",
+      "category": "self_acceptance"
+    },
+    {
+      "id": "aff_15",
+      "text": "One awkward moment does not define me.",
+      "category": "self_acceptance"
+    },
+    {
+      "id": "aff_16",
+      "text": "I can be kind to myself when things do not go to plan.",
+      "category": "self_acceptance"
+    },
+    {
+      "id": "aff_17",
+      "text": "It is okay to be quiet, and it is okay to speak up.",
+      "category": "self_acceptance"
+    },
+    {
+      "id": "aff_18",
+      "text": "Every small step is still a step.",
+      "category": "progress"
+    },
+    {
+      "id": "aff_19",
+      "text": "Trying again is part of learning.",
+      "category": "progress"
+    },
+    {
+      "id": "aff_20",
+      "text": "I have already done hard things.",
+      "category": "progress"
+    },
+    {
+      "id": "aff_21",
+      "text": "Most conversations do not need to be perfect to be good.",
+      "category": "connection"
+    },
+    {
+      "id": "aff_22",
+      "text": "Asking a question is a simple way to connect.",
+      "category": "connection"
+    },
+    {
+      "id": "aff_23",
+      "text": "I can say no kindly and still be a good person.",
+      "category": "connection"
+    },
+    {
+      "id": "aff_24",
+      "text": "People are often glad when someone says hello.",
+      "category": "connection"
     }
   ]
 }

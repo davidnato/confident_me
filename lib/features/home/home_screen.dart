@@ -15,7 +15,9 @@ import '../../shared/widgets/soft_card.dart';
 import '../affirmations/affirmation_providers.dart';
 import '../challenges/challenge_providers.dart';
 import '../challenges/progress_controller.dart';
+import '../gamification/gamification_providers.dart';
 import '../onboarding/profile_controller.dart';
+import '../settings/reminder_logic.dart';
 import '../settings_controller.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -36,15 +38,29 @@ class HomeScreen extends ConsumerWidget {
             child: ListView(
               padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
               children: [
-                Text(
-                  buildGreeting(now, profile.displayName),
-                  key: const Key('home_greeting'),
-                  style: theme.textTheme.headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.w700),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        buildGreeting(now, profile.displayName),
+                        key: const Key('home_greeting'),
+                        style: theme.textTheme.headlineMedium
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    IconButton(
+                      key: const Key('open_settings'),
+                      tooltip: 'Settings',
+                      icon: const Icon(Icons.settings_outlined),
+                      onPressed: () => context.push(AppRoutes.settings),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 6),
                 Text(AppConstants.philosophy, style: theme.textTheme.bodyLarge),
                 const SizedBox(height: 20),
+                const _ReminderCard(),
                 const _TodayCard(),
                 const SizedBox(height: 16),
                 const _AffirmationCard(),
@@ -73,6 +89,64 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
+class _ReminderCard extends ConsumerWidget {
+  const _ReminderCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (!ref.watch(reminderVisibleProvider)) return const SizedBox.shrink();
+    final theme = Theme.of(context);
+    final settings = ref.watch(settingsProvider);
+    final todays = ref.watch(todaysChallengeProvider);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: SoftCard(
+        child: Column(
+          key: const Key('reminder_card'),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(Icons.notifications_none_rounded,
+                    color: theme.colorScheme.primary),
+                const SizedBox(width: 8),
+                Text('A gentle nudge', style: theme.textTheme.labelLarge),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(reminderMessage, style: theme.textTheme.bodyLarge),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: FilledButton(
+                    onPressed: () {
+                      final target = settings.dailyChallengeEnabled && todays != null
+                          ? AppRoutes.challengeDetail(todays.id)
+                          : AppRoutes.challenges;
+                      context.go(target);
+                    },
+                    child: const Text('Sure'),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => ref
+                        .read(reminderDismissProvider.notifier)
+                        .dismissToday(),
+                    child: const Text('Not today'),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _TodayCard extends ConsumerWidget {
   const _TodayCard();
 
@@ -83,6 +157,7 @@ class _TodayCard extends ConsumerWidget {
     final challenge = ref.watch(todaysChallengeProvider);
     final doneToday = ref.watch(completedTodayProvider);
     final showXp = ref.watch(settingsProvider).gamificationEnabled;
+    final dailyEnabled = ref.watch(settingsProvider).dailyChallengeEnabled;
 
     return async.when(
       loading: () => const SoftCard(child: LoadingView()),
@@ -116,9 +191,27 @@ class _TodayCard extends ConsumerWidget {
             const SizedBox(height: 12),
           ],
           SoftCard(
-            child: challenge == null
-                ? const Text('No challenges are available right now.')
-                : _TodayContent(challenge: challenge, showXp: showXp),
+            child: !dailyEnabled
+                ? Column(
+                    key: const Key('daily_off_card'),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Daily suggestions are off',
+                          style: theme.textTheme.titleMedium
+                              ?.copyWith(fontWeight: FontWeight.w700)),
+                      const SizedBox(height: 4),
+                      const Text(
+                          'Browse the challenge library whenever you feel ready.'),
+                      const SizedBox(height: 12),
+                      FilledButton(
+                        onPressed: () => context.go(AppRoutes.challenges),
+                        child: const Text('Browse challenges'),
+                      ),
+                    ],
+                  )
+                : challenge == null
+                    ? const Text('No challenges are available right now.')
+                    : _TodayContent(challenge: challenge, showXp: showXp),
           ),
         ],
       ),
@@ -185,7 +278,13 @@ class _AffirmationCard extends ConsumerWidget {
     if (affirmation == null) return const SizedBox.shrink();
     final theme = Theme.of(context);
     return SoftCard(
-      child: Row(
+      padding: EdgeInsets.zero,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(24),
+        onTap: () => context.go(AppRoutes.affirmations),
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(Icons.favorite_rounded, color: theme.colorScheme.primary),
@@ -205,6 +304,8 @@ class _AffirmationCard extends ConsumerWidget {
             ),
           ),
         ],
+      ),
+        ),
       ),
     );
   }
@@ -227,6 +328,9 @@ class _ProgressCard extends ConsumerWidget {
     };
     final total = ChallengeCategory.values.length;
     final recent = completed.reversed.take(3).toList();
+    final gamification = ref.watch(settingsProvider).gamificationEnabled;
+    final level = ref.watch(levelInfoProvider);
+    final streak = ref.watch(streakProvider);
 
     return SoftCard(
       child: Column(
@@ -238,6 +342,35 @@ class _ProgressCard extends ConsumerWidget {
                 ?.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: 12),
+          if (gamification) ...[
+            Text(
+              'Level ${level.level}',
+              key: const Key('home_level'),
+              style: theme.textTheme.titleLarge
+                  ?.copyWith(fontWeight: FontWeight.w700),
+            ),
+            const SizedBox(height: 6),
+            LinearProgressIndicator(
+              value: level.progress,
+              minHeight: 8,
+              borderRadius: BorderRadius.circular(8),
+              semanticsLabel: 'Progress to next level',
+              semanticsValue: '${level.xpIntoLevel} of ${level.xpForNextLevel} XP',
+            ),
+            const SizedBox(height: 4),
+            Text(
+              '${level.xpIntoLevel} of ${level.xpForNextLevel} XP to level ${level.level + 1}',
+              style: theme.textTheme.bodySmall,
+            ),
+            if (streak.current > 0) ...[
+              const SizedBox(height: 4),
+              Text(
+                'Current streak: ${streak.current} ${streak.current == 1 ? 'day' : 'days'}',
+                style: theme.textTheme.bodySmall,
+              ),
+            ],
+            const SizedBox(height: 12),
+          ],
           Text(
             '${completed.length} ${completed.length == 1 ? 'challenge' : 'challenges'} completed',
             key: const Key('completed_count'),
@@ -300,7 +433,7 @@ class _QuickLinks extends StatelessWidget {
           child: _QuickLink(
             icon: Icons.air_rounded,
             label: 'Breathing',
-            onTap: () => context.go(AppRoutes.practice),
+            onTap: () => context.go(AppRoutes.breathing),
           ),
         ),
         const SizedBox(width: 12),

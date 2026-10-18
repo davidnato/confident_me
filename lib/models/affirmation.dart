@@ -5,6 +5,8 @@ class Affirmation {
   final String text;
   final String category;
 
+  Map<String, dynamic> toJson() => {'id': id, 'text': text, 'category': category};
+
   static Affirmation? tryFromJson(Map<String, dynamic> json) {
     final id = json['id'];
     final text = json['text'];

@@ -32,6 +32,20 @@ class ConfidenceChallenge {
   /// A smaller version of the same step, shown by "Make this easier".
   final String easierStep;
 
+  ConfidenceChallenge withXpReward(int xp) => ConfidenceChallenge(
+        id: id,
+        title: title,
+        description: description,
+        category: category,
+        difficulty: difficulty,
+        estimatedMinutes: estimatedMinutes,
+        instructions: instructions,
+        reflectionPrompt: reflectionPrompt,
+        xpReward: xp,
+        preparation: preparation,
+        easierStep: easierStep,
+      );
+
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,

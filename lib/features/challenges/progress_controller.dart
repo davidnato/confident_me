@@ -12,9 +12,11 @@ class ChallengeProgressController extends Notifier<List<ChallengeProgress>> {
 
   DateTime _now() => ref.read(clockProvider)();
 
+  /// State is updated first so two quick actions cannot overwrite each other,
+  /// then the new list is saved.
   Future<void> _write(List<ChallengeProgress> next) async {
-    await ref.read(progressRepositoryProvider).save(next);
     state = next;
+    await ref.read(progressRepositoryProvider).save(next);
   }
 
   ChallengeProgress _newRecord(String challengeId, ChallengeStatus status) {
@@ -44,31 +46,45 @@ class ChallengeProgressController extends Notifier<List<ChallengeProgress>> {
     return record;
   }
 
-  /// Marks the current attempt completed. Returns false (and changes nothing)
-  /// if the latest attempt is already completed, so a completion can only be
-  /// recorded once per attempt.
-  Future<bool> complete(String challengeId, {String reflection = ''}) async {
+  /// Marks the current attempt completed and returns it. Returns null (and
+  /// changes nothing) if the latest attempt is already completed, so a
+  /// completion can only be recorded once per attempt.
+  Future<ChallengeProgress?> complete(
+    String challengeId, {
+    String reflection = '',
+  }) async {
     final latest = state.latestFor(challengeId);
     if (latest != null && latest.status == ChallengeStatus.completed) {
-      return false;
+      return null;
     }
     final now = _now();
     if (latest != null && latest.status == ChallengeStatus.inProgress) {
-      await _replace(latest.copyWith(
+      final done = latest.copyWith(
         status: ChallengeStatus.completed,
         completedAt: now,
         updatedAt: now,
         reflection: reflection.trim(),
-      ));
-    } else {
-      final record = _newRecord(challengeId, ChallengeStatus.inProgress).copyWith(
-        status: ChallengeStatus.completed,
-        completedAt: now,
-        reflection: reflection.trim(),
       );
-      await _write([...state, record]);
+      await _replace(done);
+      return done;
     }
-    return true;
+    final record = _newRecord(challengeId, ChallengeStatus.inProgress).copyWith(
+      status: ChallengeStatus.completed,
+      completedAt: now,
+      reflection: reflection.trim(),
+    );
+    await _write([...state, record]);
+    return record;
+  }
+
+  /// Remembers how much XP an attempt earned (for display in history).
+  Future<void> recordXp(String recordId, int xp) async {
+    for (final r in state) {
+      if (r.id == recordId) {
+        await _replace(r.withXpAwarded(xp));
+        return;
+      }
+    }
   }
 
   Future<void> skip(String challengeId) =>
@@ -103,6 +119,12 @@ class ChallengeProgressController extends Notifier<List<ChallengeProgress>> {
           .copyWith(postponedUntil: until, updatedAt: now);
       await _write([...state, record]);
     }
+  }
+
+  /// Removes every attempt. Only used by the explicit reset / delete actions.
+  Future<void> clearAll() async {
+    state = [];
+    await ref.read(progressRepositoryProvider).clear();
   }
 
   /// Chooses the smaller "Make this easier" version for the current attempt.

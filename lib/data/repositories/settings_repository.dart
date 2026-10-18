@@ -10,6 +10,9 @@ class SettingsRepository {
   final SharedPreferences _prefs;
   static const storageKey = 'app_settings_v1';
 
+  /// False on a fresh install (or after settings were reset).
+  bool get hasStored => _prefs.containsKey(storageKey);
+
   AppSettings load() {
     final raw = _prefs.getString(storageKey);
     if (raw == null) return const AppSettings();

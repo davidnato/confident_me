@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,7 +9,15 @@ import '../../features/home/home_shell.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/onboarding/profile_controller.dart';
 import '../../features/onboarding/welcome_screen.dart';
-import '../../features/placeholder/phase_placeholder_screen.dart';
+import '../../features/affirmations/affirmations_screen.dart';
+import '../../features/breathing/breathing_screen.dart';
+import '../../features/journal/journal_editor_screen.dart';
+import '../../features/journal/journal_screen.dart';
+import '../../features/practice/practice_hub_screen.dart';
+import '../../features/social_practice/rehearsal_screen.dart';
+import '../../features/social_practice/scenario_screen.dart';
+import '../../features/progress/progress_screen.dart';
+import '../../features/settings/settings_screen.dart';
 
 abstract class AppRoutes {
   static const welcome = '/welcome';
@@ -19,8 +27,17 @@ abstract class AppRoutes {
   static const practice = '/practice';
   static const journal = '/journal';
   static const progress = '/progress';
+  static const settings = '/settings';
 
   static String challengeDetail(String id) => '$challenges/$id';
+
+  static const breathing = '/practice/breathing';
+  static const affirmations = '/practice/affirmations';
+  static String scenario(String id) => '/practice/scenario/$id';
+  static String scenarioRehearse(String id) => '/practice/scenario/$id/rehearse';
+
+  static const journalNew = '/journal/new';
+  static String journalEdit(String id) => '/journal/edit/$id';
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -52,6 +69,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: AppRoutes.onboarding,
         builder: (context, state) => const OnboardingScreen(),
       ),
+      GoRoute(
+        path: AppRoutes.settings,
+        builder: (context, state) => const SettingsScreen(),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => HomeShell(navigationShell: shell),
         branches: [
@@ -78,40 +99,55 @@ final routerProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(routes: [
             GoRoute(
               path: AppRoutes.practice,
-              builder: (context, state) => const PhasePlaceholderScreen(
-                title: 'Practice',
-                icon: Icons.self_improvement_rounded,
-                phase: 4,
-                description:
-                    'Guided breathing and conversation scenarios you can '
-                    'rehearse at your own pace.',
-              ),
+              builder: (context, state) => const PracticeHubScreen(),
+              routes: [
+                GoRoute(
+                  path: 'breathing',
+                  builder: (context, state) => const BreathingScreen(),
+                ),
+                GoRoute(
+                  path: 'affirmations',
+                  builder: (context, state) => const AffirmationsScreen(),
+                ),
+                GoRoute(
+                  path: 'scenario/:id',
+                  builder: (context, state) => ScenarioScreen(
+                    scenarioId: state.pathParameters['id']!,
+                  ),
+                  routes: [
+                    GoRoute(
+                      path: 'rehearse',
+                      builder: (context, state) => RehearsalScreen(
+                        scenarioId: state.pathParameters['id']!,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
               path: AppRoutes.journal,
-              builder: (context, state) => const PhasePlaceholderScreen(
-                title: 'Journal',
-                icon: Icons.edit_note_rounded,
-                phase: 4,
-                description:
-                    'A private place to reflect on what happened, what you '
-                    'feared, and what you learned. Stored on this device.',
-              ),
+              builder: (context, state) => const JournalScreen(),
+              routes: [
+                GoRoute(
+                  path: 'new',
+                  builder: (context, state) => const JournalEditorScreen(),
+                ),
+                GoRoute(
+                  path: 'edit/:id',
+                  builder: (context, state) => JournalEditorScreen(
+                    entryId: state.pathParameters['id'],
+                  ),
+                ),
+              ],
             ),
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
               path: AppRoutes.progress,
-              builder: (context, state) => const PhasePlaceholderScreen(
-                title: 'Progress',
-                icon: Icons.insights_rounded,
-                phase: 5,
-                description:
-                    'A gentle look at the effort you have put in, with '
-                    'personal milestones and a weekly activity calendar.',
-              ),
+              builder: (context, state) => const ProgressScreen(),
             ),
           ]),
         ],

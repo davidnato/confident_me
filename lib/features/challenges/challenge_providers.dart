@@ -1,17 +1,24 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/constants/xp_config.dart';
 import '../../core/utils/clock.dart';
 import '../../data/providers.dart';
 import '../../models/challenge_progress.dart';
 import '../../models/confidence_challenge.dart';
-import '../../models/difficulty.dart';
 import '../onboarding/profile_controller.dart';
+import '../settings_controller.dart';
 import 'daily_planner.dart';
 import 'progress_controller.dart';
 
-final challengesProvider = FutureProvider<List<ConfidenceChallenge>>(
-  (ref) => ref.watch(challengeRepositoryProvider).loadAll(),
-);
+/// Loads the bundled library and applies the configured XP values, so what is
+/// shown before a challenge is always what is awarded after it.
+final challengesProvider = FutureProvider<List<ConfidenceChallenge>>((ref) async {
+  final config = ref.watch(xpConfigProvider);
+  final all = await ref.watch(challengeRepositoryProvider).loadAll();
+  return [
+    for (final c in all) c.withXpReward(config.forDifficulty(c.difficulty)),
+  ];
+});
 
 final challengeByIdProvider =
     Provider.family<ConfidenceChallenge?, String>((ref, id) {
@@ -34,7 +41,7 @@ final todaysChallengeProvider = Provider<ConfidenceChallenge?>((ref) {
     challenges: challenges,
     progress: ref.watch(challengeProgressProvider),
     goals: profile?.selectedGoals ?? const [],
-    preferredDifficulty: profile?.preferredDifficulty ?? _defaultDifficulty,
+    preferredDifficulty: ref.watch(settingsProvider).preferredDifficulty,
     now: ref.watch(clockProvider)(),
   );
 });
@@ -57,4 +64,3 @@ final completedTodayProvider = Provider<ChallengeProgress?>((ref) {
   return null;
 });
 
-const _defaultDifficulty = Difficulty.easy;

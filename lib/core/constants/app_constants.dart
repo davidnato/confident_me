@@ -1,6 +1,8 @@
 class AppConstants {
   const AppConstants._();
 
+  /// Keep in step with `version:` in pubspec.yaml (a test checks this).
+  static const version = '0.5.0';
   static const appName = 'ConfidentMe';
   static const tagline = 'Small steps. Big confidence.';
   static const philosophy = 'Confidence grows through practice, not perfection.';

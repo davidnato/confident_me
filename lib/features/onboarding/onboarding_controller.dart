@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 import '../../models/challenge_category.dart';
 import '../../models/difficulty.dart';
 import '../../models/user_profile.dart';
+import '../settings_controller.dart';
 import 'profile_controller.dart';
 
 class OnboardingState {
@@ -114,9 +115,13 @@ class OnboardingController extends AutoDisposeNotifier<OnboardingState> {
 
   Future<void> finish() async {
     final existing = ref.read(profileProvider);
+    final profile = buildProfile(existing: existing);
+    await ref.read(profileProvider.notifier).save(profile);
+    // The daily suggestion uses the difficulty in Settings, so keep it in step
+    // with what the person just told us (they can change it in Settings).
     await ref
-        .read(profileProvider.notifier)
-        .save(buildProfile(existing: existing));
+        .read(settingsProvider.notifier)
+        .setPreferredDifficulty(profile.preferredDifficulty);
   }
 }
 

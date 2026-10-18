@@ -1,0 +1,428 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "intro_yourself",
+      "title": "Introducing yourself",
+      "description": "You are at a class, workshop or community group and would like to say who you are.",
+      "setting": "A class, workshop or community group",
+      "conversationStarters": [
+        "Hi, I'm [name]. I'm fairly new here.",
+        "Hello, I don't think we've met. I'm [name].",
+        "Hi, I'm [name]. What brought you along today?"
+      ],
+      "followUpQuestions": [
+        "How did you get into this?",
+        "Have you been coming for long?",
+        "What do you enjoy most about it?"
+      ],
+      "prompts": [
+        {
+          "heard": "Nice to meet you! What do you do?",
+          "suggestions": [
+            "I work in [field]. How about you?",
+            "I'm studying [subject]. What about you?",
+            "Mostly [short answer]. What brings you here?"
+          ]
+        },
+        {
+          "heard": "Where are you from?",
+          "suggestions": [
+            "I grew up in [place]. Have you always lived here?",
+            "I'm from [place], but I live in [place] now. And you?",
+            "Originally [place]. Do you know it?"
+          ]
+        },
+        {
+          "heard": "Have you been to one of these before?",
+          "suggestions": [
+            "This is my first one. Any tips?",
+            "A couple of times. How about you?",
+            "Not yet. What's it usually like?"
+          ]
+        }
+      ],
+      "listeningTips": [
+        "Look at the person while they speak, if that feels comfortable.",
+        "Repeat their name once to help you remember it.",
+        "A short introduction is perfectly fine."
+      ]
+    },
+    {
+      "id": "join_conversation",
+      "title": "Joining a conversation",
+      "description": "A small group is chatting and you would like to join in for a bit.",
+      "setting": "A break room, a party, or a group event",
+      "conversationStarters": [
+        "Mind if I join you?",
+        "That sounds interesting. What are you talking about?",
+        "Hi, I overheard something about [topic]. I like that too."
+      ],
+      "followUpQuestions": [
+        "What did you think of it?",
+        "How did you hear about it?",
+        "What would you recommend?"
+      ],
+      "prompts": [
+        {
+          "heard": "Sure, come on in! We were talking about weekend plans.",
+          "suggestions": [
+            "Thanks! I'm still deciding mine. What are you up to?",
+            "Sounds good. Anyone doing anything fun?",
+            "I'll just listen for a moment, if that's okay."
+          ]
+        },
+        {
+          "heard": "Have you seen that new show everyone's talking about?",
+          "suggestions": [
+            "Not yet. Is it worth watching?",
+            "I've seen a bit of it. What did you think?",
+            "No, but I'd like to. What's it about?"
+          ]
+        },
+        {
+          "heard": "We were just about to get food. Want to come?",
+          "suggestions": [
+            "I'd like that, thanks.",
+            "Maybe next time, but thanks for asking.",
+            "Sure. Where were you thinking?"
+          ]
+        }
+      ],
+      "listeningTips": [
+        "Listen for a moment first to catch the topic.",
+        "Nodding and smiling shows you are engaged.",
+        "You can leave a conversation any time you like."
+      ]
+    },
+    {
+      "id": "keep_going",
+      "title": "Keeping a conversation going",
+      "description": "The conversation has started and you would like it to continue naturally.",
+      "setting": "Any casual chat",
+      "conversationStarters": [
+        "How has your week been so far?",
+        "Do you have any plans coming up?",
+        "What do you usually do to unwind?"
+      ],
+      "followUpQuestions": [
+        "What was that like?",
+        "How did that come about?",
+        "What happened next?"
+      ],
+      "prompts": [
+        {
+          "heard": "It's been busy, to be honest.",
+          "suggestions": [
+            "Same here. What's kept you busy?",
+            "That sounds like a lot. Anything good in it?",
+            "I know the feeling. Anything you're looking forward to?"
+          ]
+        },
+        {
+          "heard": "I went hiking at the weekend.",
+          "suggestions": [
+            "That sounds nice. Where did you go?",
+            "I'd like to try that. Is it easy to get started?",
+            "How was it?"
+          ]
+        },
+        {
+          "heard": "Yeah, it was fine.",
+          "suggestions": [
+            "What was the best part?",
+            "Fine is good. Anything you'd change?",
+            "Glad to hear it. What's next?"
+          ]
+        }
+      ],
+      "listeningTips": [
+        "Short answers are normal. A gentle open question can help.",
+        "Pick up on one detail they mention and ask about it.",
+        "Comfortable silences are allowed."
+      ]
+    },
+    {
+      "id": "follow_up",
+      "title": "Asking follow-up questions",
+      "description": "You want to show interest by asking a question that builds on what someone just said.",
+      "setting": "A chat with a colleague, classmate or friend",
+      "conversationStarters": [
+        "What made you choose that?",
+        "How did you find out about it?",
+        "What's the best part so far?"
+      ],
+      "followUpQuestions": [
+        "Could you tell me more about that?",
+        "What was that like for you?",
+        "What would you do differently?"
+      ],
+      "prompts": [
+        {
+          "heard": "I just started learning guitar.",
+          "suggestions": [
+            "That's great. What made you want to start?",
+            "How is it going so far?",
+            "What kind of music do you want to play?"
+          ]
+        },
+        {
+          "heard": "I moved here last month.",
+          "suggestions": [
+            "How are you finding it so far?",
+            "What do you like most about it?",
+            "What helped you settle in?"
+          ]
+        },
+        {
+          "heard": "I've been working on a big project.",
+          "suggestions": [
+            "What's it about?",
+            "What's the hardest part?",
+            "How do you feel it's going?"
+          ]
+        }
+      ],
+      "listeningTips": [
+        "Listen for a detail you can ask about.",
+        "Open questions starting with what or how invite longer answers.",
+        "It is fine to say: that sounds interesting."
+      ]
+    },
+    {
+      "id": "compliments",
+      "title": "Giving and receiving compliments",
+      "description": "You would like to give a genuine compliment or accept one without feeling awkward.",
+      "setting": "Work, school or with friends",
+      "conversationStarters": [
+        "I really liked how you explained that.",
+        "That's a great idea. Thank you for sharing it.",
+        "I like your [thing]. Where did you find it?"
+      ],
+      "followUpQuestions": [
+        "How did you come up with that?",
+        "What got you into that?",
+        "How long did that take you?"
+      ],
+      "prompts": [
+        {
+          "heard": "Thanks, I appreciate that!",
+          "suggestions": [
+            "You're welcome. I meant it.",
+            "Happy to say it.",
+            "It really helped me."
+          ]
+        },
+        {
+          "heard": "You did really well today.",
+          "suggestions": [
+            "Thank you, that means a lot.",
+            "Thanks! I put some effort into it.",
+            "Thank you. I appreciate you noticing."
+          ]
+        },
+        {
+          "heard": "Oh, this old thing?",
+          "suggestions": [
+            "It suits you, in my opinion.",
+            "I really do like it.",
+            "Fair enough. I just thought I'd say."
+          ]
+        }
+      ],
+      "listeningTips": [
+        "Be specific and honest. Specific compliments feel genuine.",
+        "When receiving one, a simple thank you is enough.",
+        "You do not have to return a compliment."
+      ]
+    },
+    {
+      "id": "disagree",
+      "title": "Politely disagreeing",
+      "description": "You see something differently and want to say so respectfully.",
+      "setting": "A meeting, class or group chat",
+      "conversationStarters": [
+        "I see it a bit differently. Can I share my view?",
+        "That's one way to look at it. Another could be...",
+        "I'm not sure I agree. Here's what I think..."
+      ],
+      "followUpQuestions": [
+        "What led you to that view?",
+        "Can you say more about that?",
+        "What would change your mind?"
+      ],
+      "prompts": [
+        {
+          "heard": "I think we should do it this way.",
+          "suggestions": [
+            "Thanks. I was thinking about it another way. Could I explain?",
+            "That's an option. What about the risk of...?",
+            "I can see why. I would lean toward..."
+          ]
+        },
+        {
+          "heard": "You're wrong about that.",
+          "suggestions": [
+            "I see it differently, but I'd like to understand your view.",
+            "Maybe we see it differently. Can we look at the facts?",
+            "I hear you. Let's agree to disagree on that one."
+          ]
+        },
+        {
+          "heard": "Everyone else agrees with this.",
+          "suggestions": [
+            "That may be so. I'd still like to share a different thought.",
+            "I appreciate that. Mine is a little different.",
+            "Understood. Can I add one point?"
+          ]
+        }
+      ],
+      "listeningTips": [
+        "Disagreeing about an idea is not disagreeing about the person.",
+        "Acknowledge their point first, then share yours.",
+        "You can pause and say: let me think about that."
+      ]
+    },
+    {
+      "id": "boundaries",
+      "title": "Setting boundaries",
+      "description": "You want to say no, or limit something, in a calm and kind way.",
+      "setting": "With friends, family or colleagues",
+      "conversationStarters": [
+        "I'd like to, but I can't this time.",
+        "I'm not comfortable with that, thanks.",
+        "I need some time to think. Can I get back to you?"
+      ],
+      "followUpQuestions": [
+        "Could we do it another way?",
+        "Is there a different day that works?",
+        "What's the most important part for you?"
+      ],
+      "prompts": [
+        {
+          "heard": "Can you cover my shift this weekend?",
+          "suggestions": [
+            "I can't this time, sorry.",
+            "I'm not able to this weekend. Could we try next week?",
+            "Let me check and get back to you."
+          ]
+        },
+        {
+          "heard": "Come on, just stay a bit longer.",
+          "suggestions": [
+            "Thanks, but I'm heading off now.",
+            "I'd rather go. Thanks for the invite.",
+            "I'm tired. I'll see you next time."
+          ]
+        },
+        {
+          "heard": "Why not? It's no big deal.",
+          "suggestions": [
+            "It's just not for me, and that's okay.",
+            "I'd rather not say, but I appreciate you asking.",
+            "I've decided, thank you."
+          ]
+        }
+      ],
+      "listeningTips": [
+        "You do not need to over-explain a no.",
+        "A calm, friendly tone and a short sentence are enough.",
+        "Other people may feel disappointed. That does not mean you did something wrong."
+      ]
+    },
+    {
+      "id": "meeting",
+      "title": "Speaking in a meeting",
+      "description": "You want to contribute one idea or question in a meeting or class.",
+      "setting": "A meeting, class or video call",
+      "conversationStarters": [
+        "Can I add something?",
+        "I have a question about that.",
+        "One idea I had was..."
+      ],
+      "followUpQuestions": [
+        "Does that make sense?",
+        "What do others think?",
+        "Could we try that first?"
+      ],
+      "prompts": [
+        {
+          "heard": "Does anyone have any thoughts?",
+          "suggestions": [
+            "I have a quick idea, if that's okay.",
+            "I'd like to ask about the timeline.",
+            "Could I add one point?"
+          ]
+        },
+        {
+          "heard": "Can you repeat that? I didn't catch it.",
+          "suggestions": [
+            "Of course. In short...",
+            "Sure. The main point is...",
+            "Let me say that another way."
+          ]
+        },
+        {
+          "heard": "Any questions before we finish?",
+          "suggestions": [
+            "Yes. Could we clarify who is doing what?",
+            "Just one. When is the next step due?",
+            "No, but thank you. That was clear."
+          ]
+        }
+      ],
+      "listeningTips": [
+        "Write your point down first if that helps.",
+        "One clear sentence is enough.",
+        "Questions are a valuable contribution too."
+      ]
+    },
+    {
+      "id": "awkward_pause",
+      "title": "Handling an awkward pause",
+      "description": "The conversation goes quiet and you are not sure what to do.",
+      "setting": "Any conversation",
+      "conversationStarters": [
+        "Anything interesting coming up for you this week?",
+        "Sorry, I lost my train of thought for a second.",
+        "I was just thinking about [topic]."
+      ],
+      "followUpQuestions": [
+        "What's been the best part of your day?",
+        "Have you watched or read anything good lately?",
+        "What are you looking forward to?"
+      ],
+      "prompts": [
+        {
+          "heard": "(silence for a few seconds)",
+          "suggestions": [
+            "Take a slow breath, then ask: Anything fun planned this week?",
+            "That's okay. I'll just take a moment to think.",
+            "Smile, and say: Quiet moments are fine by me."
+          ]
+        },
+        {
+          "heard": "Um... so... yeah.",
+          "suggestions": [
+            "Yeah, it happens. How's your week going?",
+            "No rush. I'm happy to chat about anything.",
+            "Let's try a different topic. What are you into lately?"
+          ]
+        },
+        {
+          "heard": "Sorry, I ran out of things to say!",
+          "suggestions": [
+            "Me too sometimes. It's fine.",
+            "No need to be sorry. It's a normal part of chatting.",
+            "That's okay. Shall we get a drink?"
+          ]
+        }
+      ],
+      "listeningTips": [
+        "Pauses feel longer to you than to the other person.",
+        "One slow breath can give you time to think.",
+        "You can simply say: let me think for a second."
+      ]
+    }
+  ]
+}

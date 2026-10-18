@@ -8,6 +8,8 @@ import '../../models/confidence_challenge.dart';
 import '../../shared/widgets/async_states.dart';
 import '../../shared/widgets/info_chip.dart';
 import '../../shared/widgets/soft_card.dart';
+import '../gamification/gamification_service.dart';
+import '../gamification/reward_feedback.dart';
 import '../settings_controller.dart';
 import 'challenge_providers.dart';
 import 'progress_controller.dart';
@@ -291,11 +293,16 @@ class _InProgressActions extends ConsumerWidget {
         builder: (_) => _ReflectionSheet(prompt: challenge.reflectionPrompt),
       );
       if (reflection == null) return; // dismissed: not completed
-      final recorded =
-          await controller.complete(challenge.id, reflection: reflection);
-      if (context.mounted && recorded) {
-        _snack(context, 'Nicely done. Taking a step counts, however small.');
-      }
+      final result = await ref
+          .read(gamificationServiceProvider)
+          .completeChallenge(challenge, reflection: reflection);
+      if (!context.mounted) return;
+      await showRewardFeedback(
+        context,
+        result,
+        showGamification: ref.read(settingsProvider).gamificationEnabled,
+        message: 'Nicely done. Taking a step counts, however small.',
+      );
     }
 
     Future<void> makeEasier() async {

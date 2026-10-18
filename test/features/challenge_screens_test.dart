@@ -53,6 +53,11 @@ void main() {
     await tester.enterText(find.byType(TextField), 'It went okay');
     await tapVisible(tester, find.text('Save and finish'));
 
+    // The first completion earns an achievement, so a gentle dialog appears.
+    expect(find.text('Something to celebrate'), findsOneWidget);
+    expect(find.text('First small step'), findsOneWidget);
+    await tapVisible(tester, find.text('Continue'));
+
     expect(find.byKey(const Key('completed_card')), findsOneWidget);
     final records = containerOf(tester).read(challengeProgressProvider);
     expect(records.length, 1);
