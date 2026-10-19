@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/theme/app_palette.dart';
 import '../data/providers.dart';
 import '../models/app_settings.dart';
 import '../models/difficulty.dart';
@@ -11,8 +12,8 @@ class SettingsController extends Notifier<AppSettings> {
   AppSettings build() {
     final repo = ref.read(settingsRepositoryProvider);
     final settings = repo.load();
-    // Before Phase 5 the starting difficulty lived only in the profile. If no
-    // settings were ever saved, carry that choice over.
+    // The starting difficulty chosen in onboarding is also kept in the profile.
+    // If no settings were ever saved, carry that choice over.
     if (!repo.hasStored) {
       final profile = ref.read(profileProvider);
       if (profile != null) {
@@ -29,6 +30,9 @@ class SettingsController extends Notifier<AppSettings> {
 
   Future<void> setThemeMode(ThemeMode mode) =>
       update(state.copyWith(themeMode: mode));
+
+  Future<void> setPalette(AppPalette palette) =>
+      update(state.copyWith(palette: palette));
 
   Future<void> setPreferredDifficulty(Difficulty difficulty) =>
       update(state.copyWith(preferredDifficulty: difficulty));

@@ -285,26 +285,27 @@ class _AffirmationCard extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.all(18),
           child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(Icons.favorite_rounded, color: theme.colorScheme.primary),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Today's affirmation", style: theme.textTheme.labelLarge),
-                const SizedBox(height: 4),
-                Text(
-                  affirmation.text,
-                  key: const Key('todays_affirmation'),
-                  style: theme.textTheme.bodyLarge,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(Icons.favorite_rounded, color: theme.colorScheme.primary),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Today's affirmation",
+                        style: theme.textTheme.labelLarge),
+                    const SizedBox(height: 4),
+                    Text(
+                      affirmation.text,
+                      key: const Key('todays_affirmation'),
+                      style: theme.textTheme.bodyLarge,
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
         ),
       ),
     );

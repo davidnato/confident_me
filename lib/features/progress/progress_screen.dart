@@ -34,8 +34,8 @@ const _milestoneIdeas = <String>[
   'Spoke in a meeting',
 ];
 
-/// Phase 3 version of Progress: level, streak, milestones, achievements and
-/// XP history. The weekly calendar and category overview arrive in Phase 5.
+/// Progress: level and streak, a weekly activity calendar, categories explored,
+/// personal milestones, achievements and XP history.
 class ProgressScreen extends ConsumerWidget {
   const ProgressScreen({super.key});
 

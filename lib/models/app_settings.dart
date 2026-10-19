@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/theme/app_palette.dart';
 import 'difficulty.dart';
 
 class AppSettings {
@@ -10,6 +11,7 @@ class AppSettings {
     this.dailyChallengeEnabled = true,
     this.gamificationEnabled = true,
     this.reminderMinutes = defaultReminderMinutes,
+    this.palette = AppPalette.lavender,
   });
 
   /// 7:00 pm, as minutes after midnight.
@@ -24,6 +26,9 @@ class AppSettings {
   /// Time of day for the gentle reminder, as minutes after midnight (0-1439).
   final int reminderMinutes;
 
+  /// Colour palette (independent of light / dark mode).
+  final AppPalette palette;
+
   AppSettings copyWith({
     ThemeMode? themeMode,
     bool? remindersEnabled,
@@ -31,6 +36,7 @@ class AppSettings {
     bool? dailyChallengeEnabled,
     bool? gamificationEnabled,
     int? reminderMinutes,
+    AppPalette? palette,
   }) =>
       AppSettings(
         themeMode: themeMode ?? this.themeMode,
@@ -40,6 +46,7 @@ class AppSettings {
             dailyChallengeEnabled ?? this.dailyChallengeEnabled,
         gamificationEnabled: gamificationEnabled ?? this.gamificationEnabled,
         reminderMinutes: reminderMinutes ?? this.reminderMinutes,
+        palette: palette ?? this.palette,
       );
 
   Map<String, dynamic> toJson() => {
@@ -49,6 +56,7 @@ class AppSettings {
         'dailyChallengeEnabled': dailyChallengeEnabled,
         'gamificationEnabled': gamificationEnabled,
         'reminderMinutes': reminderMinutes,
+        'palette': palette.id,
       };
 
   factory AppSettings.fromJson(Map<String, dynamic> json) {
@@ -72,6 +80,9 @@ class AppSettings {
       reminderMinutes: json['reminderMinutes'] is int
           ? (json['reminderMinutes'] as int).clamp(0, 1439).toInt()
           : defaultReminderMinutes,
+      palette: AppPalette.fromId(
+        json['palette'] is String ? json['palette'] as String : null,
+      ),
     );
   }
 }

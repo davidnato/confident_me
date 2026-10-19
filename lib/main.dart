@@ -9,7 +9,8 @@ import 'data/repositories/record_store.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Small settings and Phase 2-3 progress live in SharedPreferences.
+  // Settings, challenge progress, XP and achievements live in
+  // SharedPreferences (small records saved as JSON).
   final prefs = await SharedPreferences.getInstance();
 
   // Journal entries, practice sessions and custom affirmations live in Hive,

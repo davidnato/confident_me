@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
+import 'app_palette.dart';
 
 class AppTheme {
   const AppTheme._();
 
-  static ThemeData light() => _build(Brightness.light);
-  static ThemeData dark() => _build(Brightness.dark);
+  static ThemeData light([AppPalette palette = AppPalette.lavender]) =>
+      _build(palette, Brightness.light);
 
-  static ThemeData _build(Brightness brightness) {
+  static ThemeData dark([AppPalette palette = AppPalette.lavender]) =>
+      _build(palette, Brightness.dark);
+
+  static ThemeData _build(AppPalette palette, Brightness brightness) {
     final isLight = brightness == Brightness.light;
     final scheme = ColorScheme.fromSeed(
-      seedColor: AppColors.seed,
+      seedColor: palette.seed,
       brightness: brightness,
     ).copyWith(
-      tertiary: isLight ? AppColors.tealLight : AppColors.tealDark,
+      tertiary: isLight ? palette.tertiaryLight : palette.tertiaryDark,
     );
 
     final buttonShape = RoundedRectangleBorder(
@@ -25,7 +28,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
-      scaffoldBackgroundColor: isLight ? AppColors.lavenderBackground : null,
+      scaffoldBackgroundColor: isLight ? palette.lightBackground : null,
       appBarTheme: const AppBarTheme(
         centerTitle: false,
         scrolledUnderElevation: 0,

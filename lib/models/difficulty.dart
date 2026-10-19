@@ -8,8 +8,8 @@ enum Difficulty {
   final String id;
   final String label;
 
-  /// Default XP for this difficulty (applied in Phase 3). Challenges carry
-  /// their own xpReward so values can be tuned per challenge.
+  /// Fallback XP when a challenge entry has no value. The XP actually shown and
+  /// awarded comes from XpConfig (lib/core/constants/xp_config.dart).
   int get defaultXp => switch (this) {
         Difficulty.easy => 10,
         Difficulty.medium => 20,

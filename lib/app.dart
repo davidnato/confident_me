@@ -35,8 +35,8 @@ class _ConfidentMeAppState extends ConsumerState<ConfidentMeApp> {
     return MaterialApp.router(
       title: AppConstants.appName,
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light(),
-      darkTheme: AppTheme.dark(),
+      theme: AppTheme.light(settings.palette),
+      darkTheme: AppTheme.dark(settings.palette),
       themeMode: settings.themeMode,
       routerConfig: router,
     );

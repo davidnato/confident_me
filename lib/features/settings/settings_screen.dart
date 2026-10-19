@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/theme/app_palette.dart';
 import '../../models/difficulty.dart';
 import '../../shared/widgets/confirm_dialog.dart';
 import '../../shared/widgets/soft_card.dart';
@@ -57,6 +58,21 @@ class SettingsScreen extends ConsumerWidget {
                           selected: {settings.themeMode},
                           onSelectionChanged: (s) =>
                               controller.setThemeMode(s.first),
+                        ),
+                        const SizedBox(height: 16),
+                        Text('Color', style: theme.textTheme.titleSmall),
+                        const SizedBox(height: 8),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            for (final p in AppPalette.values)
+                              _PaletteSwatch(
+                                palette: p,
+                                selected: settings.palette == p,
+                                onTap: () => controller.setPalette(p),
+                              ),
+                          ],
                         ),
                       ],
                     ),
@@ -243,8 +259,10 @@ class _PrivacyCard extends StatelessWidget {
               'by your phone\'s lock screen and the app\'s private storage, '
               'not by a password inside the app.'),
           item('Uninstalling the app or clearing its data permanently deletes '
-              'everything. There is no cloud backup, so export a copy below if '
-              'you want to keep one.'),
+              'everything from this device. The app has no cloud backup of its '
+              'own, but your phone\'s system backup may include app data, '
+              'depending on your device settings. You can copy your data below '
+              'if you want a copy of your own.'),
         ],
       ),
     );
@@ -346,6 +364,69 @@ class _DataCard extends ConsumerWidget {
             label: const Text('Delete all my data'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// A tappable colour choice. The check mark (not just the colour) shows which
+/// one is selected, and the label is read out by screen readers.
+class _PaletteSwatch extends StatelessWidget {
+  const _PaletteSwatch({
+    required this.palette,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final AppPalette palette;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: '${palette.label} color',
+      excludeSemantics: true,
+      child: InkWell(
+        key: Key('palette_${palette.id}'),
+        borderRadius: BorderRadius.circular(16),
+        onTap: onTap,
+        child: SizedBox(
+          width: 72,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: Column(
+              children: [
+                Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: palette.seed,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: selected
+                          ? theme.colorScheme.onSurface
+                          : Colors.transparent,
+                      width: 3,
+                    ),
+                  ),
+                  child: selected
+                      ? Icon(
+                          Icons.check_rounded,
+                          key: Key('palette_check_${palette.id}'),
+                          color: Colors.white,
+                        )
+                      : null,
+                ),
+                const SizedBox(height: 4),
+                Text(palette.label, style: theme.textTheme.labelMedium),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
