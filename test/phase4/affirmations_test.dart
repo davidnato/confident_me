@@ -101,7 +101,8 @@ void main() {
 
     for (var day = 1; day <= 20; day++) {
       final other = await makeContainer(now: DateTime(2026, 10, day));
-      await other.read(affirmationPrefsProvider.notifier).toggleCategory('calm');
+      // The selected theme persists across containers; toggling would disable it.
+      expect(other.read(affirmationPrefsProvider).categories, {'calm'});
       expect(other.read(todaysAffirmationProvider)!.category, 'calm');
     }
   });

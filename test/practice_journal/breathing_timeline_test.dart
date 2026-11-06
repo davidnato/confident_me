@@ -76,7 +76,8 @@ void main() {
     // frames were skipped on the way.
     final direct = at(calm, 20);
     expect(direct.cycleNumber, 2);
-    expect(direct.phase, BreathingPhase.inhale);
+    // 20 seconds is 6 seconds into the second 14-second cycle.
+    expect(direct.phase, BreathingPhase.hold);
     expect(direct.secondsLeftInPhase, 2);
   });
 

@@ -356,7 +356,7 @@ class _ProgressCard extends ConsumerWidget {
               minHeight: 8,
               borderRadius: BorderRadius.circular(8),
               semanticsLabel: 'Progress to next level',
-              semanticsValue: '${level.xpIntoLevel} of ${level.xpForNextLevel} XP',
+              semanticsValue: '${(level.progress * 100).round()}',
             ),
             const SizedBox(height: 4),
             Text(
@@ -388,7 +388,7 @@ class _ProgressCard extends ConsumerWidget {
             minHeight: 8,
             borderRadius: BorderRadius.circular(8),
             semanticsLabel: 'Categories explored',
-            semanticsValue: '${explored.length} of $total',
+            semanticsValue: '${(explored.length / total * 100).round()}',
           ),
           const SizedBox(height: 12),
           if (recent.isEmpty)

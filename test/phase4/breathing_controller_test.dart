@@ -118,6 +118,10 @@ void main() {
       ..start()
       ..tick(const Duration(seconds: 99));
     expect(stateOf(c).elapsed, const Duration(seconds: 10));
+    // Let completion persistence finish before disposing the container.
+    await Future<void>.delayed(Duration.zero);
+    await Future<void>.delayed(Duration.zero);
+    expect(c.read(practiceSessionsProvider).single.durationSeconds, 10);
   });
 
   test('timings can be changed only when not running, and stay in range', () async {

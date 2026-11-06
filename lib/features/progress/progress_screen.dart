@@ -157,7 +157,7 @@ class _LevelCard extends ConsumerWidget {
             minHeight: 10,
             borderRadius: BorderRadius.circular(8),
             semanticsLabel: 'Progress to next level',
-            semanticsValue: '${level.xpIntoLevel} of ${level.xpForNextLevel} XP',
+            semanticsValue: '${(level.progress * 100).round()}',
           ),
           const SizedBox(height: 8),
           Text(

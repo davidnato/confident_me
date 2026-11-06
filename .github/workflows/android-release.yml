@@ -5,6 +5,10 @@ on:
   push:
     paths:
       - '.github/workflows/android-release.yml'
+      - 'lib/**'
+      - 'test/**'
+      - 'android/**'
+      - 'pubspec.*'
 
 permissions:
   contents: read
