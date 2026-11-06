@@ -1,0 +1,48 @@
+name: Android release APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/android-release.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up Flutter matching the project SDK
+        uses: actions/checkout@v4
+        with:
+          repository: flutter/flutter
+          ref: abaf9c523780a608bd46686fd5e53740a07077f8
+          path: .flutter-sdk
+      - name: Add Flutter to PATH
+        run: echo "$GITHUB_WORKSPACE/.flutter-sdk/bin" >> "$GITHUB_PATH"
+      - run: flutter --version
+      - run: flutter pub get --enforce-lockfile
+      - run: flutter analyze
+      - run: flutter test
+      - name: Build release-mode APK (existing debug signing)
+        run: flutter build apk --release
+      - name: Prepare APK and checksum
+        run: |
+          mkdir -p release-output
+          cp build/app/outputs/flutter-apk/app-release.apk release-output/ConfidentMe-0.7.0-release-mode.apk
+          cd release-output
+          sha256sum *.apk > SHA256SUMS.txt
+          printf '%s\n' 'Release-mode APK using the existing debug signing configuration. For personal testing; not a production-signed or Google Play release.' > SIGNING-NOTE.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ConfidentMe-0.7.0-release-mode-apk
+          path: release-output/
+          if-no-files-found: error
+          retention-days: 30
